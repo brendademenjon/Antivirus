@@ -13,7 +13,7 @@ public class AntivirusMain {
 		
 	
 		
-		//Criando um vetor com todos os arquivos do usuario  
+		//Criando um vetor com todos os arquivos do usuario (importante trocar o usuario)
 		File[] pastas = (new File("C:\\Users\\Cliente")).listFiles();
 		
 		//Criando um Loop que vai percorrer todos os arquivos do usuario
