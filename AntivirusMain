@@ -14,15 +14,21 @@ public class AntivirusMain {
 	
 		
 		//Criando um vetor com todos os arquivos do usuario (importante trocar o usuario)
-		File[] pastas = (new File("C:\\Users\\Cliente")).listFiles();
+		File[] pastas = (new File("C:\\Users\\172315942")).listFiles();
 		
 		//Criando um Loop que vai percorrer todos os arquivos do usuario
 		for (File diretorio : pastas) {
 			
 			//Verificando se é um Diretório 
 			if(diretorio.isDirectory()) {
-				//Chamando a função que procura pelos arquivos que procuramos
-				buscarArquivos(diretorio);
+				
+				
+				//Criando uma variavel para conter todos os arquivos encontrados e chamando a função que procura pelos arquivos
+				File[] arquivosEncontrados = buscarArquivos(diretorio);
+				
+				escreveArquivosEncontrados(arquivosEncontrados);
+				
+				
 				
 				//Criando um vetor com todos os arquivos que estão dentro do diretório 
 				File[] SubDiretorios = (new File(diretorio.toString())).listFiles();
@@ -35,7 +41,9 @@ public class AntivirusMain {
 						//Verificando se é um diretorio  
 						if(subdiretorio.isDirectory()) {
 							//Chamando a função que procura pelos arquivos que procuramos
-							buscarArquivos(subdiretorio);
+							arquivosEncontrados = buscarArquivos(subdiretorio);
+							
+							escreveArquivosEncontrados(arquivosEncontrados);
 						
 						}
 						
@@ -58,29 +66,59 @@ public class AntivirusMain {
 
 
 //Criando um método que procura pelos arquivos que queremos para evitar redundancia 
-public static void buscarArquivos(File diretorio) {
+public static File[] buscarArquivos(File diretorio) {
 	//Criando um Vetor com o nome dos arquivos que estamos procurando
 	String arquivos[] = new String[]{"execucao-aula.exe", "execucao-aula-teste.exe", "script-aula.bat", "script-aula-teste.bat"};
 	
 	
-	
+	File[] arquivosEncontrados = new File[4];
 	
 	//Criando um loop para procurar pelos quatros arquivos que procuramos
 	for(int i = 0; i < 4; i++) {
 		//Criando um arquivo com o nome daquele que procuramos
 		File arquivo = new File(diretorio + "\\" + arquivos[i]);
+		
+		
 		//verificamos se ele existe
 		boolean existe = arquivo.exists();
 		
 		if(existe) {
+			/*
 			//caso ele exista informamos ao usuario
 			System.out.println("Arquivo encontrado: " + arquivos[i]);
 			// e mostramos seu caminho
 			System.out.println("O local alocado: ");
 			System.out.println(arquivo);
 			System.out.println();
+			*/
+			arquivosEncontrados[i] = arquivo;
 			
 		} 
+		
+		
+		
+	}
+	
+	return arquivosEncontrados;
+	
+}
+
+
+public static void escreveArquivosEncontrados(File[] ArEn) {
+	
+	if(ArEn != null) {
+		for(File AE : ArEn) {
+			
+			if(AE != null) {
+				//NS significa não sei
+				String[] NS = (AE.toString()).split("\\\\"); 
+				System.out.println("Arquivo encontrado: " + NS[NS.length-1]);
+				System.out.println("O local alocado: ");
+				System.out.println(AE);
+				System.out.println();
+			}
+			
+		}
 	}
 	
 }
@@ -89,7 +127,4 @@ public static void buscarArquivos(File diretorio) {
 
 
 
-
 }
-
-
