@@ -98,15 +98,15 @@ public class AntivirusMain {
 		
 		
 		
-		while(!r.equals("y") && !r.equals("n")) {
+		while(!r.equals("s") && !r.equals("n")) {
 			
 		System.out.println();
 		
-		System.out.println("Deseja deletar algum arquivo? y/n");
+		System.out.println("Deseja deletar algum arquivo? s/n");
 		System.out.println();
 		
 		
-		System.out.println("Digite 'y' para sim ");
+		System.out.println("Digite 's' para sim ");
 		System.out.println("ou 'n' para não");
 		
 		r = scan.nextLine();
@@ -115,7 +115,7 @@ public class AntivirusMain {
 		
 		
 		switch(r){
-			case "y":  
+			case "s":  
 					while(a < 1 || a > 5) {
 							System.out.println();
 							System.out.println("Digite o número correspondente a opção que deseja deletar");
