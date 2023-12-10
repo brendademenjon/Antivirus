@@ -102,7 +102,7 @@ public class AntivirusMain {
 			
 		System.out.println();
 		
-		System.out.println("Deseja deletar algum arquivo? y/n");
+		System.out.println("Deseja deletar algum arquivo? s/n");
 		System.out.println();
 		
 		
